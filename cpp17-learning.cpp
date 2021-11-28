@@ -5,16 +5,25 @@
 #include <optional>
 #include <any>
 #include <variant>
+#include <cstddef>
 
 int main()
 {
     int i1 = 0;
     std::optional<int> opt1;
-    class A {
+    struct A {
         int a;
-        int b;
+        float b;
         int c;
     };
+
+    A a;
+    a. a =1;
+    a.b = 2;
+    a.c = 3;
+
+    auto [a1,b1,c1] = a;
+    std::cout << "a1b1c1 : "  << a1 << b1 << c1 << std::endl;
 
     std::string_view sv = "hello c++17";
     std::cout << "int size:" << sizeof(i1) <<  std::endl;
@@ -26,6 +35,8 @@ int main()
     std::cout << "std::variant<int,bool> size:" << sizeof(std::variant<int,bool>) <<  std::endl;
     std::cout << "std::variant<int,bool,A> size:" << sizeof(std::variant<int,bool,A>) <<  std::endl;
     std::cout << "std::string_view: " << sizeof(sv) <<  std::endl;
+    std::byte b{2};
+    std::cout << std::to_integer<unsigned>(b) << std::endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
